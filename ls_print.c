@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ls_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:09:38 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/19 11:15:00 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:52:03 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	ft_print_access(t_stat *elem)
 void	ft_print_int(int nlink, int spacemax)
 {
 	int		n;
-    char    *ptr;
+	char	*ptr;
 
-    ptr = ft_itoa(nlink);
-    n = spacemax - (int )ft_strlen(ptr);
+	ptr = ft_itoa(nlink);
+	n = spacemax - (int)ft_strlen(ptr);
 	while (n-- > 0)
 		ft_putchar(' ');
 	ft_putnbr(nlink);
-    free(ptr);
+	free(ptr);
 	ft_putstr(" ");
 }
 
@@ -51,7 +51,7 @@ void	ft_print_str(char *str, int spacemax)
 {
 	int		n;
 
-	n = spacemax - (int )ft_strlen(str);
+	n = spacemax - (int)ft_strlen(str);
 	ft_putstr(str);
 	while (n-- > 0)
 		ft_putchar(' ');

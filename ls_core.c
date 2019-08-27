@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:09:03 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/27 12:43:47 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:47:31 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ void	ft_ls_dir2(t_option arg, t_stat *dirlist, int multidir)
 	t_stat		*files;
 	int			first;
 	char		*temp;
-    char        *tmp;
+	char		*tmp;
 
 	first = 0;
 	files = NULL;
-    tmp = NULL;
+	tmp = NULL;
 	while (dirlist)
 	{
 		dir = opendir(dirlist->name);
-        tmp = ft_strjoin(dirlist->path, "/");
+		tmp = ft_strjoin(dirlist->path, "/");
 		while (ft_list_add(&files, readdir(dir), tmp) != 0)
-            ;
+			;
 		closedir(dir);
 		if (files)
 		{
@@ -51,7 +51,7 @@ void	ft_ls_dir2(t_option arg, t_stat *dirlist, int multidir)
 		}
 		dirlist = dirlist->next;
 	}
-    free(tmp);
+	free(tmp);
 	free_memory(files);
 }
 
@@ -69,8 +69,8 @@ void	ft_ls_dir(t_option arg, t_list *path, int multidir)
 	}
 	dir_list = ft_sort_list(dir_list, arg);
 	ft_ls_dir2(arg, dir_list, multidir);
-    free_lists(path);
-    free_memory(dir_list);
+	free_lists(path);
+	free_memory(dir_list);
 }
 
 void	ft_ls_file(t_option opt, t_list *path)

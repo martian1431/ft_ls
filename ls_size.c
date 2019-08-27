@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:10:17 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/19 13:07:56 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:55:35 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	ft_get_size_quick(t_size *size, t_stat *buf)
 {
-    char    *ptr;
-    char    *ptr2;
-    
-    ptr2 = ft_itoa((int )buf->st_nlink);
-    ptr = ft_itoa((int )buf->st_size);
+	char	*ptr;
+	char	*ptr2;
+
+	ptr2 = ft_itoa((int)buf->st_nlink);
+	ptr = ft_itoa((int)buf->st_size);
 	size->linkspace = (int)ft_strlen(ptr2) > \
 		size->linkspace ? (int)ft_strlen(ptr2) \
 		: size->linkspace;
 	size->size = (int)ft_strlen(ptr) > size->size ? \
 		(int)ft_strlen(ptr) : size->size;
 	size->total += buf->st_blocks;
-    free(ptr);
-    free(ptr2);
+	free(ptr);
+	free(ptr2);
 }
 
 t_size	ft_get_size(t_option arg, t_stat *files)

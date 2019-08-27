@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recursion.c                                        :+:      :+:    :+:   */
+/*   ls_recursion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:10:03 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/19 07:10:05 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:53:50 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_do_recursion(t_option arg, char *path)
 {
 	t_stat		*files;
 	DIR			*dir;
-    char        *tmp;
+	char		*tmp;
 
 	files = NULL;
 	ft_putchar('\n');
@@ -24,14 +24,14 @@ void	ft_do_recursion(t_option arg, char *path)
 	ft_putstr(":\n");
 	if ((dir = opendir(path)) != NULL)
 	{
-        tmp = ft_strjoin(path, "/");
-        while (ft_list_add(&files, readdir(dir), tmp));
+		tmp = ft_strjoin(path, "/");
+		while (ft_list_add(&files, readdir(dir), tmp))
 			;
-        free(tmp);
+		free(tmp);
 		closedir(dir);
 		if (files)
 			ft_display_file(arg, files, 1);
-        free_memory(files);
+		free_memory(files);
 		files = NULL;
 	}
 	else

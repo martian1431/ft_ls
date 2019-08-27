@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:11:22 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/20 07:24:12 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:49:46 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_symlnk(t_stat *buf)
 	{
 		ft_putstr(buf->name);
 		ft_putstr(" -> ");
-		len = (int )readlink(buf->path, filelink, 64);
+		len = (int)readlink(buf->path, filelink, 64);
 		filelink[len] = '\0';
 		ft_putstr(filelink);
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 08:46:35 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/27 13:41:50 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:50:34 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_memory(t_stat *files)
 {
 	t_stat *next;
-	
+
 	while (files)
 	{
 		next = files->next;
@@ -29,6 +29,7 @@ void	free_memory(t_stat *files)
 void	free_lists(t_list *list)
 {
 	t_list	*next;
+
 	while (list)
 	{
 		next = list->next;

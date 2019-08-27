@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:23:44 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/27 12:43:26 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:49:01 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_long_file(t_stat *temp, t_size size)
 	else
 		ft_print_str(ft_itoa(temp->st_gid), size.groupspace);
 	if (S_ISCHR(temp->st_mode) || S_ISBLK(temp->st_mode))
-		ft_print_int((int )temp->st_size, size.size);
-	ft_print_int((int )temp->st_size, size.size);
+		ft_print_int((int)temp->st_size, size.size);
+	ft_print_int((int)temp->st_size, size.size);
 	if (ft_display_date(temp->date, temp))
 		ft_putchar('\n');
 	else
@@ -65,5 +65,4 @@ void	ft_ls_long(t_option arg, t_stat *files, int fileordir)
 			ft_long_file(temp, size);
 		temp = temp->next;
 	}
-//    free_memory(files);
 }

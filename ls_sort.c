@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:10:32 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/19 12:56:31 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:56:36 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stat		*ft_sort_list(t_stat *list, t_option arg)
 	return (temp);
 }
 
-void		ft_elem_cpy(t_stat **src, t_stat *cpy)
+void		ft_cpy_buf(t_stat **src, t_stat *cpy)
 {
 	(*src)->name = cpy->name;
 	(*src)->path = cpy->path;
@@ -38,13 +38,13 @@ void		ft_elem_cpy(t_stat **src, t_stat *cpy)
 	(*src)->st_blocks = cpy->st_blocks;
 }
 
-void		ft_swap_elem(t_stat **a, t_stat **b)
+void		ft_swap_buf(t_stat **a, t_stat **b)
 {
 	t_stat	tmp;
 
 	tmp = **a;
-	ft_elem_cpy(a, *b);
-	ft_elem_cpy(b, &tmp);
+	ft_cpy_buf(a, *b);
+	ft_cpy_buf(b, &tmp);
 }
 
 void		ft_sort(t_stat **list, int (*cmp)(t_stat *elem1, \
@@ -60,7 +60,7 @@ void		ft_sort(t_stat **list, int (*cmp)(t_stat *elem1, \
 		while (b)
 		{
 			if (cmp(a, b) > 0)
-				ft_swap_elem(&a, &b);
+				ft_swap_buf(&a, &b);
 			b = b->next;
 		}
 		a = a->next;
@@ -71,11 +71,11 @@ void		ft_reversesort(t_stat **list)
 {
 	t_stat	*p;
 	t_stat	*q;
-    t_stat	*r = NULL;
+	t_stat	*r;
 
 	p = *list;
 	q = NULL;
-    r = NULL;
+	r = NULL;
 	while (p)
 	{
 		r = q;
