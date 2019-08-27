@@ -6,7 +6,7 @@
 #    By: pmalope <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/19 07:09:25 by pmalope           #+#    #+#              #
-#    Updated: 2019/08/27 09:01:09 by pmalope          ###   ########.fr        #
+#    Updated: 2019/08/27 17:09:08 by pmalope          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ clean:
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME) $(OBJ)
+	@make -C libft/ fclean
+	@rm -rf $(OBJ) $(NAME)
 
 re: fclean $(NAME)
