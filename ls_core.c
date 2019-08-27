@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:09:03 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/20 12:00:51 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 12:43:47 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_ls_dir2(t_option arg, t_stat *dirlist, int multidir)
 
 	first = 0;
 	files = NULL;
+    tmp = NULL;
 	while (dirlist)
 	{
 		dir = opendir(dirlist->name);
@@ -44,12 +45,14 @@ void	ft_ls_dir2(t_option arg, t_stat *dirlist, int multidir)
 			first == 1 ? ft_putchar('\n') : NULL;
 			temp = ft_strjoin(dirlist->name, ":");
 			multidir ? ft_putendl(temp) : NULL;
-			free((void *)temp);
+			free(temp);
 			first = 1;
 			ft_display_file(arg, files, 1);
 		}
 		dirlist = dirlist->next;
 	}
+    free(tmp);
+	free_memory(files);
 }
 
 void	ft_ls_dir(t_option arg, t_list *path, int multidir)
@@ -66,6 +69,8 @@ void	ft_ls_dir(t_option arg, t_list *path, int multidir)
 	}
 	dir_list = ft_sort_list(dir_list, arg);
 	ft_ls_dir2(arg, dir_list, multidir);
+    free_lists(path);
+    free_memory(dir_list);
 }
 
 void	ft_ls_file(t_option opt, t_list *path)
@@ -109,7 +114,6 @@ void	ft_open_dir(t_option opt, t_list *path, int nbr_dir)
 		}
 		temp = temp->next;
 	}
-	free(path);
 	file ? ft_ls_file(opt, file) : NULL;
 	file && directory ? ft_putchar('\n') : NULL;
 	directory ? ft_ls_dir(opt, directory, nbr_dir) : NULL;

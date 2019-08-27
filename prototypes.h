@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:09:49 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/19 13:29:32 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 13:42:16 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PROTOTYPES_H
 
 # include "ft_ls.h"
+
+void		free_memory(t_stat *files);
+void		free_lists(t_list *list);
 
 int			ft_check_opt(char c, char *str);
 void		ft_error_opt(char opt);
@@ -36,5 +39,4 @@ t_size		ft_get_size(t_option arg, t_stat *files);
 void		ft_print_access(t_stat *elem);
 void		ft_print_int(int nlink, int spacemax);
 void		ft_print_str(char *str, int spacemax);
-void		ft_print_majmin(t_stat *file, t_size size);
 #endif

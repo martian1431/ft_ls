@@ -6,14 +6,15 @@
 #    By: pmalope <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/19 07:09:25 by pmalope           #+#    #+#              #
-#    Updated: 2019/08/19 13:32:54 by pmalope          ###   ########.fr        #
+#    Updated: 2019/08/27 09:01:09 by pmalope          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= ft_ls
 
 SRC		=	main.c ls_display.c ls_elem.c ls_error.c ls_core.c ls_print.c \
-			ls_recursion.c ls_size.c ls_sort.c ls_sort_2.c ls_time.c ls_extra.c
+			ls_recursion.c ls_size.c ls_sort.c ls_sort_2.c ls_time.c \
+			ls_free.c ls_extra.c
 
 OBJ		= $(SRC:.c=.o)
 

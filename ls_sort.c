@@ -71,10 +71,11 @@ void		ft_reversesort(t_stat **list)
 {
 	t_stat	*p;
 	t_stat	*q;
-	t_stat	*r;
+    t_stat	*r = NULL;
 
 	p = *list;
 	q = NULL;
+    r = NULL;
 	while (p)
 	{
 		r = q;

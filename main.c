@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:22:56 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/23 17:27:29 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/27 14:19:49 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ int		main(int argc, char **argv)
 	if (path == NULL)
 		path = ft_lstnew(".", ft_strlen("."));
 	ft_open_dir(opt, path, path->next != NULL ? 1 : 0);
-	free(path);
-//	ft_putstr(path->content);
-//	sleep(100);
+	free_lists(path);
+	sleep(100);
 	return (0);
 }

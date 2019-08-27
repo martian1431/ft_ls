@@ -17,7 +17,7 @@ t_stat		*ft_listnew(char *name, char *path)
 	t_stat		*buf;
 	struct stat	fstat;
 
-	buf = malloc(sizeof(t_stat));
+	buf = (t_stat *)malloc(sizeof(t_stat));
 	buf->name = ft_strdup(name);
 	buf->path = ft_strjoin(path, name);
 	if (lstat(buf->path, &fstat) == -1)

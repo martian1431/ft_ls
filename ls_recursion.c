@@ -16,6 +16,7 @@ void	ft_do_recursion(t_option arg, char *path)
 {
 	t_stat		*files;
 	DIR			*dir;
+    char        *tmp;
 
 	files = NULL;
 	ft_putchar('\n');
@@ -23,12 +24,14 @@ void	ft_do_recursion(t_option arg, char *path)
 	ft_putstr(":\n");
 	if ((dir = opendir(path)) != NULL)
 	{
-		while (ft_list_add(&files, readdir(dir), \
-					ft_strjoin(path, "/")) != 0)
+        tmp = ft_strjoin(path, "/");
+        while (ft_list_add(&files, readdir(dir), tmp));
 			;
+        free(tmp);
 		closedir(dir);
 		if (files)
 			ft_display_file(arg, files, 1);
+        free_memory(files);
 		files = NULL;
 	}
 	else
