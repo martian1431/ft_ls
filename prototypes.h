@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:09:49 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/27 13:42:16 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/28 07:35:08 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 void		free_memory(t_stat *files);
 void		free_lists(t_list *list);
-
 int			ft_check_opt(char c, char *str);
 void		ft_error_opt(char opt);
 void		ft_error(char *name, char *error, int ex);
@@ -39,4 +38,5 @@ t_size		ft_get_size(t_option arg, t_stat *files);
 void		ft_print_access(t_stat *elem);
 void		ft_print_int(int nlink, int spacemax);
 void		ft_print_str(char *str, int spacemax);
+void		ft_print_file(t_stat *files, t_stat *dirlist, t_option opt, int n);
 #endif
