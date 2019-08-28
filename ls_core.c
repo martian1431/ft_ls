@@ -6,7 +6,7 @@
 /*   By: pmalope <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 07:09:03 by pmalope           #+#    #+#             */
-/*   Updated: 2019/08/27 14:47:31 by pmalope          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:56:52 by pmalope          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void	ft_display_file(t_option arg, t_stat *files, int fileordir)
 
 	temp = files;
 	temp = ft_sort_list(temp, arg);
-	(arg.l == ON) ? ft_ls_long(arg, temp, fileordir) : ft_simple(arg, temp);
+	if (arg.l == ON)
+		ft_ls_long(arg, temp, fileordir);
+	else
+		ft_simple(arg, temp);
+//	(arg.l == ON) ? ft_ls_long(arg, temp, fileordir) : ft_simple(arg, temp);
 	arg.upper_r == ON ? ft_recursion(arg, temp) : NULL;
 }
 
