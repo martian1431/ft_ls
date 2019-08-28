@@ -57,3 +57,21 @@ void	ft_print_str(char *str, int spacemax)
 		ft_putchar(' ');
 	ft_putstr("  ");
 }
+
+void	ft_print_file(t_stat *files, t_stat *dirlist, t_option opt, int n)
+{
+	int		first;
+	char	*temp;
+
+	first = 0;
+	temp = NULL;
+	if (files)
+	{
+		first == 1 ? ft_putchar('\n') : NULL;
+		temp = ft_strjoin(dirlist->name, ":");
+		n ? ft_putendl(temp) : NULL;
+		free(temp);
+		first = 1;
+		ft_display_file(opt, files, 1);
+	}
+}

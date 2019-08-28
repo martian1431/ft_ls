@@ -22,15 +22,12 @@ void	ft_display_file(t_option arg, t_stat *files, int fileordir)
 	arg.upper_r == ON ? ft_recursion(arg, temp) : NULL;
 }
 
-void	ft_ls_dir2(t_option arg, t_stat *dirlist, int multidir)
+void	ft_ls_dir2(t_option opt, t_stat *dirlist, int multidir)
 {
 	DIR			*dir;
 	t_stat		*files;
-	int			first;
-	char		*temp;
 	char		*tmp;
 
-	first = 0;
 	files = NULL;
 	tmp = NULL;
 	while (dirlist)
@@ -40,15 +37,7 @@ void	ft_ls_dir2(t_option arg, t_stat *dirlist, int multidir)
 		while (ft_list_add(&files, readdir(dir), tmp) != 0)
 			;
 		closedir(dir);
-		if (files)
-		{
-			first == 1 ? ft_putchar('\n') : NULL;
-			temp = ft_strjoin(dirlist->name, ":");
-			multidir ? ft_putendl(temp) : NULL;
-			free(temp);
-			first = 1;
-			ft_display_file(arg, files, 1);
-		}
+		ft_print_file(files, dirlist, opt, multidir);
 		dirlist = dirlist->next;
 	}
 	free(tmp);
