@@ -82,6 +82,5 @@ int				main(int argc, char **argv)
 	if (path == NULL)
 		path = ft_lstnew(".", ft_strlen("."));
 	ft_open_dir(opt, path, path->next != NULL ? 1 : 0);
-	sleep(100);
 	return (0);
 }
