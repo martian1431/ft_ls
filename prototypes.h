@@ -17,18 +17,14 @@
 
 void		free_memory(t_stat *files);
 void		free_lists(t_list *list);
-int			ft_check_opt(char c, char *str);
 void		ft_error_opt(char opt);
 void		ft_error(char *name, char *error, int ex);
 void		ft_open_dir(t_option arg, t_list *path, int nbr_dir);
-void		ft_display_file(t_option arg, t_stat *files, int fileordir);
+void		ft_display_file(t_option opt, t_stat *files, int fileordir);
 int			ft_list_add(t_stat **files, struct dirent *file, char *path);
-void		ft_list_getfiles(t_stat **files, char *name, char *path);
+void		ft_list_add_files(t_stat **lst, char *name, char *path);
 int			ft_symlnk(t_stat *buf);
-int			ft_display_date(time_t date, t_stat *buf);
 t_stat		*ft_sort_list(t_stat *list, t_option arg);
-void		ft_sort(t_stat **list, int (*cmp)());
-void		ft_reversesort(t_stat **list);
 int			ft_cmp_alpha(t_stat *elem1, t_stat *elem2);
 int			ft_cmp_time(t_stat *elem1, t_stat *elem2);
 void		ft_recursion(t_option arg, t_stat *files);

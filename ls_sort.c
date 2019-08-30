@@ -12,20 +12,26 @@
 
 #include "ft_ls.h"
 
-t_stat		*ft_sort_list(t_stat *list, t_option arg)
+static	void	ft_reversesort(t_stat **list)
 {
-	t_stat	*temp;
+	t_stat	*p;
+	t_stat	*q;
+	t_stat	*r;
 
-	if (!list)
-		return (NULL);
-	temp = list;
-	ft_sort(&temp, ft_cmp_alpha);
-	(arg.t == 1) ? ft_sort(&temp, ft_cmp_time) : NULL;
-	arg.r == 1 ? ft_reversesort(&temp) : NULL;
-	return (temp);
+	p = *list;
+	q = NULL;
+	r = NULL;
+	while (p)
+	{
+		r = q;
+		q = p;
+		p = p->next;
+		q->next = r;
+	}
+	*list = q;
 }
 
-void		ft_cpy_buf(t_stat **src, t_stat *cpy)
+static	void	ft_cpy_buf(t_stat **src, t_stat *cpy)
 {
 	(*src)->name = cpy->name;
 	(*src)->path = cpy->path;
@@ -38,7 +44,7 @@ void		ft_cpy_buf(t_stat **src, t_stat *cpy)
 	(*src)->st_blocks = cpy->st_blocks;
 }
 
-void		ft_swap_buf(t_stat **a, t_stat **b)
+static	void	ft_swap_buf(t_stat **a, t_stat **b)
 {
 	t_stat	tmp;
 
@@ -47,7 +53,7 @@ void		ft_swap_buf(t_stat **a, t_stat **b)
 	ft_cpy_buf(b, &tmp);
 }
 
-void		ft_sort(t_stat **list, int (*cmp)(t_stat *elem1, \
+static	void	ft_sort(t_stat **list, int (*cmp)(t_stat *elem1, \
 			t_stat *elem2))
 {
 	t_stat	*a;
@@ -67,21 +73,15 @@ void		ft_sort(t_stat **list, int (*cmp)(t_stat *elem1, \
 	}
 }
 
-void		ft_reversesort(t_stat **list)
+t_stat			*ft_sort_list(t_stat *list, t_option arg)
 {
-	t_stat	*p;
-	t_stat	*q;
-	t_stat	*r;
+	t_stat	*temp;
 
-	p = *list;
-	q = NULL;
-	r = NULL;
-	while (p)
-	{
-		r = q;
-		q = p;
-		p = p->next;
-		q->next = r;
-	}
-	*list = q;
+	if (!list)
+		return (NULL);
+	temp = list;
+	ft_sort(&temp, ft_cmp_alpha);
+	(arg.t == 1) ? ft_sort(&temp, ft_cmp_time) : NULL;
+	arg.r == 1 ? ft_reversesort(&temp) : NULL;
+	return (temp);
 }

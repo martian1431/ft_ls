@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void	ft_get_size_quick(t_size *size, t_stat *buf)
+static	void	ft_get_size_quick(t_size *size, t_stat *buf)
 {
 	char	*ptr;
 	char	*ptr2;
@@ -29,7 +29,7 @@ void	ft_get_size_quick(t_size *size, t_stat *buf)
 	free(ptr2);
 }
 
-t_size	ft_get_size(t_option arg, t_stat *files)
+t_size			ft_get_size(t_option arg, t_stat *files)
 {
 	t_stat		*temp;
 	t_size		size;

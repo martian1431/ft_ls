@@ -12,21 +12,7 @@
 
 #include "ft_ls.h"
 
-void	ft_display_file(t_option arg, t_stat *files, int fileordir)
-{
-	t_stat	*temp;
-
-	temp = files;
-	temp = ft_sort_list(temp, arg);
-	if (arg.l == ON)
-		ft_ls_long(arg, temp, fileordir);
-	else
-		ft_simple(arg, temp);
-//	(arg.l == ON) ? ft_ls_long(arg, temp, fileordir) : ft_simple(arg, temp);
-	arg.upper_r == ON ? ft_recursion(arg, temp) : NULL;
-}
-
-void	ft_ls_dir2(t_option opt, t_stat *dirlist, int multidir)
+static	void	ft_ls_dir2(t_option opt, t_stat *dirlist, int nb_dir)
 {
 	DIR			*dir;
 	t_stat		*files;
@@ -41,14 +27,14 @@ void	ft_ls_dir2(t_option opt, t_stat *dirlist, int multidir)
 		while (ft_list_add(&files, readdir(dir), tmp) != 0)
 			;
 		closedir(dir);
-		ft_print_file(files, dirlist, opt, multidir);
+		ft_print_file(files, dirlist, opt, nb_dir);
 		dirlist = dirlist->next;
 	}
 	free(tmp);
 	free_memory(files);
 }
 
-void	ft_ls_dir(t_option arg, t_list *path, int multidir)
+static	void	ft_ls_dir(t_option opt, t_list *path, int nb_dir)
 {
 	t_list		*tmp_path;
 	t_stat		*dir_list;
@@ -57,16 +43,16 @@ void	ft_ls_dir(t_option arg, t_list *path, int multidir)
 	dir_list = NULL;
 	while (tmp_path)
 	{
-		ft_list_getfiles(&dir_list, tmp_path->content, "");
+		ft_list_add_files(&dir_list, tmp_path->content, "");
 		tmp_path = tmp_path->next;
 	}
-	dir_list = ft_sort_list(dir_list, arg);
-	ft_ls_dir2(arg, dir_list, multidir);
+	dir_list = ft_sort_list(dir_list, opt);
+	ft_ls_dir2(opt, dir_list, nb_dir);
 	free_lists(path);
 	free_memory(dir_list);
 }
 
-void	ft_ls_file(t_option opt, t_list *path)
+void			ft_ls_file(t_option opt, t_list *path)
 {
 	t_list		*tmp_path;
 	t_stat		*files;
@@ -76,14 +62,14 @@ void	ft_ls_file(t_option opt, t_list *path)
 	opt.a = ON;
 	while (tmp_path)
 	{
-		ft_list_getfiles(&files, tmp_path->content, "");
+		ft_list_add_files(&files, tmp_path->content, "");
 		tmp_path = tmp_path->next;
 	}
 	if (files)
 		ft_display_file(opt, files, 0);
 }
 
-void	ft_open_dir(t_option opt, t_list *path, int nbr_dir)
+void			ft_open_dir(t_option opt, t_list *path, int nbr_dir)
 {
 	DIR		*dir;
 	t_list	*file;

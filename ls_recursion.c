@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void	ft_do_recursion(t_option arg, char *path)
+static	void	ft_do_recursion(t_option arg, char *path)
 {
 	t_stat		*files;
 	DIR			*dir;
@@ -38,7 +38,7 @@ void	ft_do_recursion(t_option arg, char *path)
 		ft_error("ft_ls: ", path, 0);
 }
 
-void	ft_recursion(t_option arg, t_stat *files)
+void			ft_recursion(t_option arg, t_stat *files)
 {
 	t_stat	*temp;
 

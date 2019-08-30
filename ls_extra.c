@@ -12,17 +12,47 @@
 
 #include "ft_ls.h"
 
-int		ft_check_opt(char c, char *str)
+void	ft_error_opt(char opt)
 {
-	int		i;
+	ft_putstr_fd("ft_ls: illegal option -- ", 2);
+	ft_putchar_fd(opt, 2);
+	ft_putstr_fd("\nusage: ft_ls [-lRrat] [file ...]\n", 2);
+	exit(EXIT_FAILURE);
+}
 
-	if (str == NULL || c == '\0')
-		return (0);
-	i = -1;
-	while (str[++i])
-		if (c == str[i])
-			return (1);
-	return (0);
+void	ft_error(char *name, char *error, int ex)
+{
+	ft_putstr_fd(name, 2);
+	perror(error);
+	if (ex)
+		exit(EXIT_FAILURE);
+}
+
+void	free_memory(t_stat *files)
+{
+	t_stat *next;
+
+	while (files)
+	{
+		next = files->next;
+		free(files->name);
+		free(files->path);
+		free(files);
+		files = next;
+	}
+}
+
+void	free_lists(t_list *list)
+{
+	t_list	*next;
+
+	while (list)
+	{
+		next = list->next;
+		free(list->content);
+		free(list);
+		list = next;
+	}
 }
 
 int		ft_symlnk(t_stat *buf)

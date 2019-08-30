@@ -12,9 +12,8 @@
 
 NAME	= ft_ls
 
-SRC		=	main.c ls_display.c ls_elem.c ls_error.c ls_core.c ls_print.c \
-			ls_recursion.c ls_size.c ls_sort.c ls_sort_2.c ls_time.c \
-			ls_free.c ls_extra.c
+SRC		=	main.c ls_display.c ls_lists.c ls_core.c ls_print.c ls_recursion.c \
+			ls_size.c ls_sort.c ls_sort_2.c ls_extra.c
 
 OBJ		= $(SRC:.c=.o)
 
