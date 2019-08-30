@@ -17,33 +17,33 @@
 
 typedef struct			s_opttion
 {
-	int		l;
-	int		upper_r;
-	int		a;
-	int		r;
-	int		t;
+	int					l;
+	int					upper_r;
+	int					a;
+	int					r;
+	int					t;
 }						t_option;
 
 typedef struct			s_stat
 {
-	char			*name;
-	char			*path;
-	time_t			date;
-	mode_t			st_mode;
-	nlink_t			st_nlink;
-	uid_t			st_uid;
-	gid_t			st_gid;
-	off_t			st_size;
-	quad_t			st_blocks;
-	struct s_stat	*next;
+	char				*name;
+	char				*path;
+	time_t				date;
+	mode_t				st_mode;
+	nlink_t				st_nlink;
+	uid_t				st_uid;
+	gid_t				st_gid;
+	off_t				st_size;
+	quad_t				st_blocks;
+	struct s_stat		*next;
 }						t_stat;
 
 typedef struct			s_size
 {
-	int		total;
-	int		size;
-	int		groupspace;
-	int		userspace;
-	int		linkspace;
+	int					total;
+	int					size;
+	int					groupspace;
+	int					userspace;
+	int					linkspace;
 }						t_size;
 #endif

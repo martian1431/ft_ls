@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-static	void	ft_reversesort(t_stat **list)
+static	void	ft_reverse_sort(t_stat **list)
 {
 	t_stat	*p;
 	t_stat	*q;
@@ -80,8 +80,8 @@ t_stat			*ft_sort_list(t_stat *list, t_option arg)
 	if (!list)
 		return (NULL);
 	temp = list;
-	ft_sort(&temp, ft_cmp_alpha);
-	(arg.t == 1) ? ft_sort(&temp, ft_cmp_time) : NULL;
-	arg.r == 1 ? ft_reversesort(&temp) : NULL;
+	ft_sort(&temp, ft_compare_alpha);
+	(arg.t == 1) ? ft_sort(&temp, ft_compare_time) : NULL;
+	arg.r == 1 ? ft_reverse_sort(&temp) : NULL;
 	return (temp);
 }

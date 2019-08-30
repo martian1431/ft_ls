@@ -21,7 +21,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 $(NAME): $(OBJ)
 	@make -C libft/
-	@gcc $(OBJ) -o $(NAME) -L libft/ -lft
+	@gcc $(OBJ) -o $(NAME) $(CFLAGS) -L libft/ -lft
 
 all: $(NAME)
 

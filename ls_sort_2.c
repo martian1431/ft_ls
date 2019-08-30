@@ -12,12 +12,12 @@
 
 #include "ft_ls.h"
 
-int		ft_cmp_alpha(t_stat *elem1, t_stat *elem2)
+int		ft_compare_alpha(t_stat *elem1, t_stat *elem2)
 {
 	return (ft_strcmp(elem1->name, elem2->name));
 }
 
-int		ft_cmp_time(t_stat *elem1, t_stat *elem2)
+int		ft_compare_time(t_stat *elem1, t_stat *elem2)
 {
 	return (elem1->date < elem2->date);
 }

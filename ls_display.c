@@ -66,7 +66,7 @@ static	int		ft_display_date(time_t date, t_stat *buf)
 	return (res);
 }
 
-static	void	ft_long_format(t_stat *temp, t_size size)
+static	void	ft_display_lformat(t_stat *temp, t_size size)
 {
 	ft_print_access(temp);
 	ft_print_int(temp->st_nlink, size.linkspace);
@@ -103,7 +103,7 @@ void			ft_ls_long(t_option arg, t_stat *files, int fileordir)
 	while (temp)
 	{
 		if (!(arg.a == 0 && temp->name[0] == '.'))
-			ft_long_format(temp, size);
+			ft_display_lformat(temp, size);
 		temp = temp->next;
 	}
 }
