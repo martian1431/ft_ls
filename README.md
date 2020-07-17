@@ -1,7 +1,6 @@
 # FT_ls - @WeThinkCode
-FT_ls is a recreation of the unix function, ls.  
 
-## WeThinkCode:
+ft_ls is a recreation of the unix function, ls.  
 
 **Mandatory:** 100/100  
 **Bonus:** 0/25  
