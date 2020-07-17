@@ -1,13 +1,13 @@
-# FT_ls - C - 2019  
+# FT_ls - @WeThinkCode
 FT_ls is a recreation of the unix function, ls.  
 
 ## WeThinkCode:
 
 **Mandatory:** 100/100  
-**Bonus:** 14/25  
-**Peers:** 113% (avg)  
+**Bonus:** 0/25  
+**Peers:** 100% (avg)  
   
-**Total:** 113/125
+**Total:** 100/125
 
 ## Installation:
 
@@ -43,11 +43,3 @@ make
 
 ## Disclaimer:  
 Use my code at your own risk!  
-I've listed a few names of people that have helped me with ft_ls.  
-Be sure to check out their profiles when you have time.
-
-## Helpers
-[Mike](https://github.com/MikeFMeyer) - Faster reading.  
-[Zia](https://github.com/ziadhorat) - Bonuses and long formatting.  
-[Nolin](https://github.com/nreddystudent) - Sorting and error checks.  
-[Marnus](https://github.com/mjbotes) - Mallocing and freeing.  
