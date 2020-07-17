@@ -1,4 +1,4 @@
-# FT_ls - @WeThinkCode
+# ft_ls - @WeThinkCode
 
 ft_ls is a recreation of the unix function, ls.  
 
